@@ -1,0 +1,87 @@
+{
+  "name": "coc-unocss",
+  "version": "0.1.0",
+  "description": "UnoCSS extension for coc.nvim",
+  "author": "auvred <aauvred@gmail.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "keywords": [
+    "coc.nvim",
+    "vim",
+    "neovim",
+    "unocss",
+    "css"
+  ],
+  "homepage": "https://github.com/auvred/coc-unocss#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/auvred/coc-unocss"
+  },
+  "engines": {
+    "coc": "^0.0.80"
+  },
+  "scripts": {
+    "clean": "rimraf lib",
+    "watch": "node esbuild.mjs --watch",
+    "build": "node esbuild.mjs",
+    "prepare": "node esbuild.mjs",
+    "lint": "eslint .",
+    "lint:fix": "prettier -w . && eslint --fix ."
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.59.5",
+    "@typescript-eslint/parser": "^5.59.5",
+    "coc.nvim": "^0.0.80",
+    "esbuild": "^0.17.18",
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "rimraf": "^5.0.0",
+    "simple-git-hooks": "^2.8.1",
+    "typescript": "^5.0.4"
+  },
+  "files": [
+    "lib"
+  ],
+  "lint-staged": {
+    "*.{json,yaml,yml}": [
+      "prettier --write"
+    ],
+    "*.{js,mjs,ts}": [
+      "eslint --format compact --fix"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "activationEvents": [
+    "onLanguage:vue",
+    "onLanguage:html",
+    "onLanguage:svelte",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "coc-unocss configuration",
+      "properties": {
+        "unocss.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable coc-unocss extension"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "unocss-language-server": "^0.0.10"
+  }
+}
