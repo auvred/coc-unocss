@@ -82,6 +82,6 @@
     }
   },
   "dependencies": {
-    "unocss-language-server": "^0.0.10"
+    "unocss-language-server": "^0.1.5"
   }
 }
